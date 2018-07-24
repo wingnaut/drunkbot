@@ -1,4 +1,4 @@
-# tehBscBot
+# drunkBot
 > Based on the not so basic bot by Benzi, Yemasthui, ureadmyname, & Eklipz
 
 Everything To Do With The Bot And The Room.
