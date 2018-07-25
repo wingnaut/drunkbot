@@ -60,7 +60,7 @@
     var loadChat = function (cb) {
         if (!cb) cb = function () {
         };
-        $.get("https://rawgit.com/wingnaut/drunkbot/master/lang/langIndex.json", function (json) {
+        $.get("https://rawgit.com/Eklipz/tehBscBot/master/lang/langIndex.json", function (json) {
             var link = basicBot.chatLink;
             if (json !== null && typeof json !== "undefined") {
                 langIndex = json;
@@ -193,26 +193,26 @@
     }; 
 
     var botCreator = "Matthew (Yemasthui)";
-    var botMaintainer = "RørøBøt";
-    var botCreatorIDs = ["3851534", "4105209", "3655265", "29569677"];
+    var botMaintainer = "N8te420"
+    var botCreatorIDs = ["3851534", "4105209", "3655265"];
 
     var basicBot = {
-        version: "0.4.20",
+        version: "4.20.9",
         status: false,
         name: "basicBot",
         loggedInID: null,
-        scriptLink: "https://rawgit.com/wingnaut/drunkbot/master/basicBot.js",
-        cmdLink: "https://git.io/fNRTP",
-        chatLink: "https://rawgit.com/wingnaut/drunkbot/master/lang/en.json",
+        scriptLink: "https://rawgit.com/Eklipz/tehBscBot/master/basicBot.js",
+        cmdLink: "https://git.io/v6euA",
+        chatLink: "https://rawgit.com/Eklipz/tehBscBot/master/lang/en.json",
         chat: null,
         loadChat: loadChat,
         retrieveSettings: retrieveSettings,
         retrieveFromStorage: retrieveFromStorage,
         settings: {
-            botName: "drunkBot",
+            botName: "RoboTHC",
             language: "english",
-            chatLink: "https://rawgit.com/wingnaut/drunkbot/master/lang/en.json",
-            scriptLink: "https://rawgit.com/wingnaut/drunkbot/master/basicBot.js",
+            chatLink: "https://rawgit.com/Eklipz/tehBscBot/master/lang/en.json",
+            scriptLink: "https://rawgit.com/Eklipz/tehBscBot/master/basicBot.js",
             roomLock: false, // Requires an extension to re-load the script 
             startupCap: 1, // 1-200
             startupVolume: 0, // 0-100
@@ -235,7 +235,6 @@
             voteSkipLimit: 10,
             historySkip: false,
             timeGuard: false,
-            thorCommand: true,
             maximumSongLength: 8,
             autodisable: false,
             autodiscord: false,
@@ -246,7 +245,7 @@
             autotwitch: false,
             commandCooldown: 30,
             usercommandsEnabled: true,
-            skipPosition: 1,
+            skipPosition: 3,
             skipReasons: [
                 ["theme", "This song does not fit the room theme. "],
                 ["op", "This song is on the OP list. "],
@@ -264,11 +263,11 @@
             filterChat: false,
             etaRestriction: false,
             welcome: true,
-            opLink: "https://git.io/...",
-            rulesLink: "https://git.io/...",
-            gitLink: "https://github.com/wingnaut/drunkBot",
+            opLink: "https://git.io/v636X",
+            rulesLink: "https://git.io/v6ezI",
+            gitLink: "https://github.com/Eklipz/tehBscBot",
             themeLink: null,
-            fbLink: "https://www.facebook.com/groups/..../",
+            fbLink: "https://www.facebook.com/groups/thagreenroom/",
             youtubeLink: null,
             website: "http://diamondlife.xyz",
             intervalMessages: [],
@@ -276,9 +275,9 @@
             songstats: false,
             commandLiteral: "!",
             blacklists: {
-                NSFW: "https://rawgit.com/wingnaut/drunkbot/master/NSFWList.json",
-                OP: "https://rawgit.com/wingnaut/drunkbot/master/OPList.json",
-                BANNED: "https://rawgit.com/wingnaut/drunkbot/master/BanList.json"
+                NSFW: "https://rawgit.com/Eklipz/tehBscBot/master/NSFWList.json",
+                OP: "https://rawgit.com/Eklipz/tehBscBot/master/OPList.json",
+                BANNED: "https://rawgit.com/Eklipz/tehBscBot/master/BanList.json"
             }
         },
         room: {
@@ -1975,7 +1974,7 @@
             
             ballCommand: {
                 command: ['8ball', 'ask'],
-                rank: 're',
+                rank: 'user',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
@@ -2074,7 +2073,7 @@
             
             botnameCommand: {
                 command: 'botname',
-                rank: 'host',
+                rank: 'manager',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
@@ -2894,11 +2893,11 @@
                         if (msg.length <= cmd.length + 1) return API.sendChat(subChat(basicBot.chat.currentlang, {language: basicBot.settings.language}));
                         var argument = msg.substring(cmd.length + 1);
 
-                        $.get("https://rawgit.com/wingnaut/drunkbot/master/lang/langIndex.json", function (json) {
+                        $.get("https://rawgit.com/Eklipz/tehBscBot/master/lang/langIndex.json", function (json) {
                             var langIndex = json;
                             var link = langIndex[argument.toLowerCase()];
                             if (typeof link === "undefined") {
-                                API.sendChat(subChat(basicBot.chat.langerror, {link: "https://git.io/..."}));
+                                API.sendChat(subChat(basicBot.chat.langerror, {link: "https://git.io/v6euy"}));
                             }
                             else {
                                 basicBot.settings.language = argument;
@@ -3339,25 +3338,6 @@
                             var dj = API.getDJ().username;
                             return API.sendChat(subChat(basicBot.chat.prop, {namefrom: chat.un, dj: dj, prop: this.getProps()}));
                         }
-                }
-            },
-
-            props2Command: {
-                command: ['nice', 'woot', 'dope', 'yes', 'rad'],
-                rank: 'residentdj',
-                type: 'startsWith',
-                functionality: function (chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
-                    else {
-                            var crowd = API.getUsers();
-                            var msg = chat.message;
-                            var argument = msg.substring(cmd.length + 1).replace(/@/g, '');
-                            var randomUser = Math.floor(Math.random() * crowd.length);
-                            var randomProp = Math.floor(Math.random() * basicBot.chat.props.length);
-                            var randomSentence = Math.floor(Math.random() * 1);
-                            API.sendChat(subChat(basicBot.chat.prop, {name: chat.un, botname: basicBot.settings.botName, question: argument, response: basicBot.chat.props[randomProp]}));
-                     }
                 }
             },
 
@@ -3938,94 +3918,6 @@
                 }
             },
 
-            //THOR
-            thorCommand: {
-                command: 'thor',
-                rank: 'residentdj',
-                type: 'exact',
-                functionality: function(chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                    if (!basicBot.commands.executable(this.rank, chat)) return void(0);
-                    else {
-                        if (basicBot.settings.thorCommand) {
-                            var id = chat.uid,
-                                isDj = API.getDJ().id == id ? true : false,
-                                from = chat.un,
-                                djlist = API.getWaitList(),
-                                inDjList = false,
-                                oldTime = 0,
-                                usedThor = false,
-                                indexArrUsedThor,
-                                thorCd = false,
-                                timeInMinutes = 0,
-                                worthyAlg = Math.floor(Math.random() * 10) + 1,
-                                worthy = worthyAlg == 10 ? true : false;
-
-                            // sly benzi 👀
-                            if (botCreatorIDs.indexOf(id) > -1) {
-                                worthy = true;
-                            }
-
-
-                            for (var i = 0; i < djlist.length; i++) {
-                                if (djlist[i].id == id)
-                                    inDjList = true;
-                            }
-
-                            if (inDjList) {
-                                for (var i = 0; i < basicBot.room.usersUsedThor.length; i++) {
-                                    if (basicBot.room.usersUsedThor[i].id == id) {
-                                        oldTime = basicBot.room.usersUsedThor[i].time;
-                                        usedThor = true;
-                                        indexArrUsedThor = i;
-                                    }
-                                }
-
-                                if (usedThor) {
-                                    timeInMinutes = (basicBot.settings.thorCooldown + 1) - (Math.floor((oldTime - Date.now()) * Math.pow(10, -5)) * -1);
-                                    thorCd = timeInMinutes > 0 ? true : false;
-                                    if (thorCd == false)
-                                        basicBot.room.usersUsedThor.splice(indexArrUsedThor, 1);
-                                }
-
-                                if (thorCd == false || usedThor == false) {
-                                    var user = {
-                                        id: id,
-                                        time: Date.now()
-                                    };
-                                    basicBot.room.usersUsedThor.push(user);
-                                }
-                            }
-
-                            if (!inDjList) {
-                                return API.sendChat(subChat(basicBot.chat.thorNotClose, {
-                                    name: from
-                                }));
-                            } else if (thorCd) {
-                                return API.sendChat(subChat(basicBot.chat.thorcd, {
-                                    name: from,
-                                    time: timeInMinutes
-                                }));
-                            }
-
-                            if (worthy) {
-                                if (API.getWaitListPosition(id) != 0)
-                                    basicBot.userUtilities.moveUser(id, 1, false);
-                                API.sendChat(subChat(basicBot.chat.thorWorthy, {
-                                    name: from
-                                }));
-                            } else {
-                                if (API.getWaitListPosition(id) != djlist.length - 1)
-                                    basicBot.userUtilities.moveUser(id, djlist.length, false);
-                                API.sendChat(subChat(basicBot.chat.thorNotWorthy, {
-                                    name: from
-                                }));
-                            }
-                        }
-                    }
-                }
-            },
-
             timeguardCommand: {
                 command: 'timeguard',
                 rank: 'bouncer',
@@ -4522,4 +4414,3 @@
 
     loadChat(basicBot.startup);
 }).call(this);
-
