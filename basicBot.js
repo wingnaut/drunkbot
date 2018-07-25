@@ -197,12 +197,12 @@
     var botCreatorIDs = ["3851534", "4105209", "3655265", "29569677"];
 
     var basicBot = {
-        version: "4.20.drunky",
+        version: "0.4.20",
         status: false,
         name: "basicBot",
         loggedInID: null,
         scriptLink: "https://rawgit.com/wingnaut/drunkbot/master/basicBot.js",
-        cmdLink: "https://git.io/v6euA",
+        cmdLink: "https://git.io/...",
         chatLink: "https://rawgit.com/wingnaut/drunkbot/master/lang/en.json",
         chat: null,
         loadChat: loadChat,
@@ -235,7 +235,7 @@
             voteSkipLimit: 10,
             historySkip: false,
             timeGuard: false,
-            thor: true,
+            thorCommand: true,
             maximumSongLength: 8,
             autodisable: false,
             autodiscord: false,
@@ -2898,7 +2898,7 @@
                             var langIndex = json;
                             var link = langIndex[argument.toLowerCase()];
                             if (typeof link === "undefined") {
-                                API.sendChat(subChat(basicBot.chat.langerror, {link: "https://git.io/v6euy"}));
+                                API.sendChat(subChat(basicBot.chat.langerror, {link: "https://git.io/..."}));
                             }
                             else {
                                 basicBot.settings.language = argument;
