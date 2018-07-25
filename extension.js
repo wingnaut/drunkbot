@@ -164,7 +164,7 @@ type: 'exact',
 functionality: function (chat, cmd) {
 if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
 if (!bot.commands.executable(this.rank, chat)) return void (0);
-else {API.sendChat("/me Staff Guidelines: https://git.io/v6ezU");}}};
+else {API.sendChat("/me Staff Guidelines: https://git.io/fNRkf");}}};
 
 bot.commands.doarefreshCommand = {
 command: 'ref',
@@ -174,6 +174,26 @@ functionality: function (chat, cmd) {
 if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
 if (!bot.commands.executable(this.rank, chat)) return void (0);
 else {API.sendChat("/me Having a problem or issue with plug.dj? Try refreshing =)");}}};
+
+//props2
+bot.commands.props2 = {
+command: 'nice', 'woot', 'dope', 'yes', 'rad',
+                rank: 'rdj',
+                type: 'startsWith',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                            var crowd = API.getUsers();
+                            var msg = chat.message;
+                            var argument = msg.substring(cmd.length + 1).replace(/@/g, '');
+                            var randomUser = Math.floor(Math.random() * crowd.length);
+                            var randomBall = Math.floor(Math.random() * basicBot.chat.props.length);
+                            var randomSentence = Math.floor(Math.random() * 1);
+                            API.sendChat(subChat(basicBot.chat.prop, {name: chat.un, botname: basicBot.settings.botName, question: argument, response: basicBot.chat.props[randomProp]}));
+                     }
+                }
+            };
 
 bot.commands.rouletteinfoCommand = {
 command: 'rouletteinfo',
@@ -191,7 +211,7 @@ type: 'exact',
 functionality: function (chat, cmd) {
 if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
 if (!bot.commands.executable(this.rank, chat)) return void (0);
-else {API.sendChat("/me Tips for trying to get staff: https://git.io/v6ezf");}}};  
+else {API.sendChat("/me Tips for trying to get staff: https://git.io/fNRTx");}}};  
 
 bot.commands.whatissubCommand = {
 command: 'subinfo',
@@ -249,6 +269,7 @@ maximumCycletime: 10,
 voteSkip: false,
 voteSkipLimit: 10,
 historySkip: true,
+thorCommand: true,
 timeGuard: true,
 maximumSongLength: 10,
 autodisable: true,
