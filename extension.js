@@ -1,4 +1,4 @@
-// Credit to ureadmyname & Benzi
+// Credit to ureadmyname, Benzi & N8teZero
 
 (function () {
 
